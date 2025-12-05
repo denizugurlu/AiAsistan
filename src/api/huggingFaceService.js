@@ -1,8 +1,6 @@
 const API_URL =
   'https://router.huggingface.co/hf-inference/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english';
-const API_TOKEN = process.env?.HF_TOKEN
-  ? `Bearer ${process.env.HF_TOKEN}`
-  : undefined;
+const API_TOKEN = 'Bearer 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';
 
 //rastgele mesajların bulunduğu mesaj havuzu
 const MESAJ_HAVUZU = {
@@ -74,7 +72,7 @@ export const duyguAnaliziYap = async metin => {
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: {
-        ...(API_TOKEN ? { Authorization: API_TOKEN } : {}),
+        Authorization: API_TOKEN,
         'Content-Type': 'application/json',
       },
 
