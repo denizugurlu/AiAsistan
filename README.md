@@ -26,7 +26,7 @@ Gereksinimler = Node.js
 	        Android Studio
                         VS CODE
 
-Proje klonlama = git clone [https://github.com/KULLANICI_ADINIZ/ai-gunluk-asistanim.git](https://github.com/KULLANICI_ADINIZ/ai-gunluk-asistanim.git)
+Proje klonlama = git clone [https://github.com/denizugurlu/ai-asistan-gunluk](https://github.com/denizugurlu/ai-asistan-gunluk)
 cd ai-gunluk-asistanim
 
 Bağımlılıkların yüklenmesi = npm install
