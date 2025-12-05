@@ -1,6 +1,11 @@
-const API_URL =
-  'https://router.huggingface.co/hf-inference/models/distilbert/distilbert-base-uncased-finetuned-sst-2-english';
-const API_TOKEN = 'Bearer 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';
+import Config from 'react-native-config';
+
+const API_URL = Config.HF_API_URL;
+const API_TOKEN = `Bearer ${Config.HF_API_TOKEN}`;
+
+// Geçici: env değerleri yüklendi mi kontrol
+console.log('HF_API_URL:', API_URL);
+console.log('HF_API_TOKEN exists:', Boolean(Config.HF_API_TOKEN));
 
 //rastgele mesajların bulunduğu mesaj havuzu
 const MESAJ_HAVUZU = {
@@ -74,6 +79,7 @@ export const duyguAnaliziYap = async metin => {
       headers: {
         Authorization: API_TOKEN,
         'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
 
       body: JSON.stringify({ inputs: metin }),
@@ -114,7 +120,18 @@ export const duyguAnaliziYap = async metin => {
       oneri: secilenMesaj.oneri,
     };
   } catch (error) {
-    console.error('Servise ulaşılamadı', error);
+    console.error('Servise ulaşılamadı', error?.message || error);
     return null;
+  }
+};
+
+// Basit ağ testi: httpbin ile GET denemesi
+export const agTesti = async () => {
+  try {
+    const res = await fetch('https://httpbin.org/get');
+    return res.ok;
+  } catch (e) {
+    console.error('Ağ testi başarısız:', e?.message || e);
+    return false;
   }
 };
