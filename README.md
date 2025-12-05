@@ -36,6 +36,25 @@ Uygulama başlatma  = Önce Metro Bundler başlamalı : npm start
 
 
 
+--- Android SDK ve Gradle Hataları ---
+
+Eğer `npm run android` komutu sırasında şu hata görülürse:
+
+"SDK location not found. Define a valid SDK location with an ANDROID_HOME environment variable or by setting the sdk.dir path in your project's local properties file"
+- Android SDK yolu makineye özeldir ve Git'e commit edilmez.
+
+Çözüm:
+- Android Studio ile `android` klasörünü açın; Studio otomatik olarak `android/local.properties` dosyasını oluşturur ve `sdk.dir` ayarlar.
+- Alternatif olarak `android/local.properties` dosyasını elle oluşturun ve Windows için SDK yolunu yazın:
+
+	`sdk.dir=C:\\Users\\<kullanıcı_adı>\\AppData\\Local\\Android\\Sdk`
+
+- `android/local.properties` ve Gradle cache klasörleri `.gitignore` içerisindedir, commit edilmez.
+- Proje `compileSdkVersion=36` kullanır; Android Studio SDK Manager üzerinden API 36'yı kurduğunuzdan emin olun.
+
+
+
+
 --Kullanılan AI Modeli Hakkında Bilgiler -- 
 
 Bu projede Hugging Face API kullanılmıştır.
